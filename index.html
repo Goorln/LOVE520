@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="keywords" content=""/>
+		<meta name="description" content=""/>
+		<title>520表白</title>
+		<style>
+			*{margin:0;padding:0;}
+			body{background:url("images/1.jpg");background-size:cover;}
+			/*start top*/
+			.top{width:400px;height:100px;margin:60px auto;font-size:30px;font-family:"华文行楷";color:#fff;
+			<!--background:-webkit-linear-gradient(45deg,#ff0000,#ffcc00,#ffff99,#33ccff,#00ff33,#6600ff,#333399);
+			-webkit-background-clip:text;-->}
+			/*end top*/
+			/*start box*/
+			.box{width:310px;height:310px;margin:auto;perspective:800px;/*景深*/}
+			.box .pic{position:relative;transform-style:preserve-3d;/*3d环境*/ animation:play 10s linear infinite;/*动画名称 执行时间 匀速 无限执行*/}
+			.box ul li{list-style:none;position:absolute;top:0;left:0;}
+			/*start box*/
+			/*定义一个关键帧*/
+			@keyframes play{
+				from{transform:rotateY(0deg);}
+				to{transform:rotateY(360deg);}
+			}
+            ul {
+                transform-style:preserve-3d;
+            }
+			/*start text*/
+			#text{width:500px;height:200px;color:#6fade1;margin:auto;font-size:24px;font-family:"方正喵呜体";}
+			/*end text*/
+		</style>
+	</head>
+	<body>
+		<!--start top-->
+		<div class="top">
+			<marquee behavior="alternate">时光不老，我们不散</marquee>
+		</div>
+		<!--end top-->
+		<!--start box-->
+		<div class="box">
+			<div class="pic">
+				<ul>
+					<li><img src="images/11.png" width="" height="" alt=""/></li>
+					<li><img src="images/22.png" width="" height="" alt=""/></li>
+					<li><img src="images/33.png" width="" height="" alt=""/></li>
+					<li><img src="images/44.png" width="" height="" alt=""/></li>
+					<li><img src="images/55.png" width="" height="" alt=""/></li>
+					<li><img src="images/22.png" width="" height="" alt=""/></li>
+				</ul>
+			</div>
+		</div>
+		<!--end box-->
+		<!--start text-->
+		<div id="text"></div>
+		<!--end text-->
+		<embed src="music.mp3" hidden="true" loop="-1" width="0" height="0"/>
+		<embed src="music.ogg" hidden="true" loop="-1" width="0" height="0"/>
+		<embed src="music.wav" hidden="true" loop="-1" width="0" height="0"/>
+        <script src="js/jquery.js"></script>
+		<!--雪花-->
+		<script src="js/snow.js"></script>
+		<script>
+			$(".pic ul li").each(function(i){//遍历
+				var deg=360/$(".pic ul li").size();//size个数
+				//当前的li对象 添加css样式
+				$(this).css({"transform":"rotateY("+deg*i+"deg) translateZ(216px)"});
+				
+				$.fn.snow({
+					minSize:10,
+					maxSize:15,
+					newOn:500,
+					flakeColor:"#ffffff"
+				});
+			});
+			var i=0;
+			var str="能够遇见你是我最大的幸运，有了你生活变得丰富多彩，有了你，世界变得如此迷人；你是我的世界，我的世界是你，对我来说，不是在最美好的时光遇见了你，而是遇见你后都是最美好的时光！";
+			
+			window.onload=function typing(){
+				//获取div
+				var mydiv=document.getElementById("text");
+				mydiv.innerHTML+=str.charAt(i);
+				i++;
+				var id=setTimeout(typing,100);
+				if(i==str.length){
+					clearTimeout(id);
+				}
+			}
+		</script>
+	</body>
+</html>
